@@ -55,7 +55,5 @@ uninstall:
 
 clean:
 	$(RM) $(SRC_DIR)/$(LIBNAME).o
-	$(RM) $(LIB_DIR)/$(LIBNAME).so
-	$(RM) $(LIB_DIR)/$(LIBNAME).so.0
-	$(RM) $(LIB_DIR)/$(LIBNAME).so.0.0
-	$(RM) $(BIN_DIR)/test
+	$(RMDIR) $(LIB_DIR)
+	$(RMDIR) $(BIN_DIR)
