@@ -306,6 +306,58 @@ namespace NetConfig
 		return(ret_dns);
 	}
 
+  char* EthernetConfig::getMAC()
+  {
+    struct ifreq ifr;
+    int sock, j, k;
+    char *p, addr[32], mask[32];
+    char *macaddr;
+
+		char* ret = (char*) malloc(sizeof(char)*32);
+    strcpy(ret,"");
+
+    sock=socket(PF_INET, SOCK_STREAM, 0);
+    if (-1==sock) {
+        perror("socket() ");
+        return ret;
+    }
+
+    strncpy(ifr.ifr_name,this->iface,sizeof(ifr.ifr_name)-1);
+    ifr.ifr_name[sizeof(ifr.ifr_name)-1]='\0';
+
+
+    if (-1==ioctl(sock, SIOCGIFADDR, &ifr)) {
+        perror("ioctl(SIOCGIFADDR) ");
+        return ret;
+    }
+    p=inet_ntoa(((struct sockaddr_in *)(&ifr.ifr_addr))->sin_addr);
+    strncpy(addr,p,sizeof(addr)-1);
+    addr[sizeof(addr)-1]='\0';
+
+
+    if (-1==ioctl(sock, SIOCGIFNETMASK, &ifr)) {
+        perror("ioctl(SIOCGIFNETMASK) ");
+        return ret;
+    }
+    p=inet_ntoa(((struct sockaddr_in *)(&ifr.ifr_netmask))->sin_addr);
+    strncpy(mask,p,sizeof(mask)-1);
+    mask[sizeof(mask)-1]='\0';
+
+
+    if (-1==ioctl(sock, SIOCGIFHWADDR, &ifr)) {
+        perror("ioctl(SIOCGIFHWADDR) ");
+        return ret;
+    }
+    for (j=0, k=0; j<6; j++) {
+        k+=snprintf(macaddr+k, sizeof(macaddr)-k-1, j ? ":%02X" : "%02X",
+            (int)(unsigned int)(unsigned char)ifr.ifr_hwaddr.sa_data[j]);
+    }
+    macaddr[sizeof(macaddr)-1]='\0';
+    strcpy(ret,macaddr);
+    strcpy(mac,macaddr);
+    return(macaddr);
+  }
+
 	int EthernetConfig::setIPAddr(char* ip_addr){
 		int sockfd;
 		struct ifreq ifr;

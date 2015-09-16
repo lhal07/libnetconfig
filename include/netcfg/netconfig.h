@@ -60,6 +60,7 @@ namespace NetConfig
       char gateway[16];
       char netmask[16];
       char dns[16];
+      char mac[32];
       int setInterfaceDown();
 
     public:
@@ -67,13 +68,14 @@ namespace NetConfig
       int setActiveInterface();
       char* getActiveInterface();
       char* getIPAddr();
-      char* getGateway();
-      char* getMask();
-      char* getDNS();
       int setIPAddr(char*);
+      char* getGateway();
       int setGateway(char*);
+      char* getMask();
       int setMask(char*);
+      char* getDNS();
       int setDNS(char*);
+      char* getMAC();
 
       /*Ping function will not be implemented in initial version
       void* runPing(void*);
