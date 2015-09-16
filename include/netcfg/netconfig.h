@@ -75,7 +75,7 @@ namespace NetConfig
       int setMask(char*);
       char* getDNS();
       int setDNS(char*);
-      char* getMAC();
+      char* getMAC(int colon = 0);
 
       /*Ping function will not be implemented in initial version
       void* runPing(void*);
