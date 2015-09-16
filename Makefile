@@ -36,8 +36,8 @@ $(SRC_DIR)/$(LIBNAME).o:
 
 test: $(BIN_DIR)/test
 
-$(BIN_DIR)/test: $(SRC_DIR)/test.c bin_dir
-	$(CC) -I$(INC_DIR) $(SRC_DIR)/test.c -Llib -l$(LIB) -lpthread -o $(BIN_DIR)/test
+$(BIN_DIR)/test: $(SRC_DIR)/test.cpp bin_dir
+	$(CC) -I$(INC_DIR) $(SRC_DIR)/test.cpp -Llib -l$(LIB) -lpthread -o $(BIN_DIR)/test
 
 install: lib
 	$(CP) $(LIB_DIR)/$(LIBNAME).so.0.0 $(PREFIX)/$(LIB_DIR)
