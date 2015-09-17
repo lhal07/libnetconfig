@@ -25,7 +25,7 @@ lib_dir:
 lib: $(LIB_DIR)/$(LIBNAME).so 
 
 $(LIB_DIR)/$(LIBNAME).so: $(SRC_DIR)/$(LIBNAME).o lib_dir
-	$(CC) $(SHR_LINK) -Wl,-soname,$(LIB_DIR)/$(LIBNAME).so.0 -I$(INC_DIR) -o $(LIB_DIR)/$(LIBNAME).so.0.0 $(SRC_DIR)/$(LIBNAME).o -lc
+	$(CC) $(SHR_LINK) -Wl,-soname,$(LIBNAME).so.0 -I$(INC_DIR) -o $(LIB_DIR)/$(LIBNAME).so.0.0 $(SRC_DIR)/$(LIBNAME).o -lc
 	$(RM) $(LIB_DIR)/$(LIBNAME).so.0
 	$(LINK) $(LIBNAME).so.0.0 $(LIB_DIR)/$(LIBNAME).so.0
 	$(RM) $(LIB_DIR)/$(LIBNAME).so
