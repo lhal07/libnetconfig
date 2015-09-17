@@ -325,6 +325,7 @@ namespace NetConfig
 		ifr.ifr_name[sizeof(ifr.ifr_name)-1]='\0';
 
 		if (-1==ioctl(sock, SIOCGIFHWADDR, &ifr)) {
+      close(sock);
 			perror("ioctl(SIOCGIFHWADDR) ");
 			return(ret_mac);
 		}
@@ -337,6 +338,7 @@ namespace NetConfig
 		ret_mac[sizeof(macaddr)-1]='\0';
 		strcpy(mac,ret_mac);
 		strcpy(ret_mac,macaddr);
+    close(sock);
 		return(ret_mac);
 	}
 
