@@ -1,3 +1,6 @@
+#ifndef NETCONFIG_H
+#define NETCONFIG_H
+
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
@@ -90,3 +93,5 @@ namespace NetConfig
       */
   };
 }
+
+#endif
