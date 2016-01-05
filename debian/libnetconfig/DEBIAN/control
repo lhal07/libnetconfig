@@ -1,0 +1,9 @@
+Package: libnetconfig
+Version: 0.1-0
+Section: base
+Priority: optional
+Architecture: armhf
+Depends: 
+Maintainer: Luis Lourenco <luis.lourenco@grupoabl.com.br>
+Description: Network Configuration Libary
+ Network Configuration library for Linux
