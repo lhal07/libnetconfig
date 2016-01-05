@@ -68,4 +68,5 @@ clean:
 	$(RM) $(SRC_DIR)/$(LIBNAME).o
 	$(RMDIR) $(LIB_DIR)
 	$(RMDIR) $(BIN_DIR)
+	$(RM) $(PKG_DIR)/$(PACKAGE)
 	$(RMDIR) $(PKG_DIR)/$(LIBNAME)/$(PREFIX)
